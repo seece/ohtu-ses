@@ -1,4 +1,5 @@
-# node-js-getting-started
+# ohtu ses BibTeX
+*Based on the Heroku node.js example*
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
 
