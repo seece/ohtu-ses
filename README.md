@@ -1,6 +1,11 @@
 # ohtu ses BibTeX
 *Based on the Heroku node.js example*
 
+Do this:
+```sh
+git remote add git@heroku.com:ses-bibtex.git
+```
+
 A barebones Node.js app using [Express 4](http://expressjs.com/).
 
 This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
@@ -21,7 +26,6 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 ## Deploying to Heroku
 
 ```
-$ heroku create
 $ git push heroku master
 $ heroku open
 ```
