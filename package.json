@@ -1,10 +1,11 @@
 {
-  "name": "node-js-getting-started",
+  "name": "ses-bibtex",
   "version": "0.1.0",
-  "description": "A sample Node.js app using Express 4",
+  "description": "A BibTeX database.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+	"test": "echo testing here"
   },
   "dependencies": {
     "express": "~3.4.x"
@@ -14,16 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/seece/ohtu-ses/"
   },
   "keywords": [
     "node",
     "heroku",
     "express"
-  ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
   ],
   "license": "MIT"
 }
