@@ -1,6 +1,9 @@
 # ohtu ses BibTeX
 *Based on the Heroku node.js example*
+
 [Trello board](https://trello.com/b/byTYqc1K/bibtex)
+
+[Travis CI page](https://travis-ci.org/seece/ohtu-ses)
 
 Do this:
 ```sh
@@ -13,12 +16,9 @@ This application support the [Getting Started with Node on Heroku](https://devce
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
 $ npm start
 ```
 
