@@ -1,5 +1,6 @@
 # ohtu ses BibTeX
 *Based on the Heroku node.js example*
+[Trello board](https://trello.com/b/byTYqc1K/bibtex)
 
 Do this:
 ```sh
