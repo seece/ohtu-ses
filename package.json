@@ -2,17 +2,18 @@
   "name": "ses-bibtex",
   "version": "0.1.0",
   "description": "A BibTeX database.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-	"test": "echo testing here"
+    "start": "node server.js",
+	"test": "mocha"
   },
   "dependencies": {
     "express": "~3.4.x",
 	"mongoose": "*"
   },
   "devDependencies": {
-	"supervisor" : "*"
+	"supervisor" : "*",
+	"should" : "4.0.4"
   },
   "engines": {
     "node": "0.10.x"

@@ -20,6 +20,8 @@ $ npm start
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
+If you have `supervisor` installed you can run just `supervisor index.js` to gain automatic reload functionality.
+
 ## Deploying to Heroku
 
 Add Heroku repository.
