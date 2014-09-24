@@ -5,12 +5,7 @@
 
 [Travis CI page](https://travis-ci.org/seece/ohtu-ses)
 
-Do this:
-```sh
-git remote add git@heroku.com:ses-bibtex.git
-```
-
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+A Node.js app using [Express 4](http://expressjs.com/).
 
 This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
 
@@ -19,6 +14,7 @@ This application support the [Getting Started with Node on Heroku](https://devce
 Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
+$ npm install
 $ npm start
 ```
 
@@ -26,10 +22,17 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 ## Deploying to Heroku
 
+Add Heroku repository.
+```sh
+git remote add heroku git@heroku.com:ses-bibtex.git
+```
+
 ```
 $ git push heroku master
 $ heroku open
 ```
+
+This will not work if you don't have access rights to Heroku repository.
 
 ## Documentation
 

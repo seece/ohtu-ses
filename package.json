@@ -8,7 +8,11 @@
 	"test": "echo testing here"
   },
   "dependencies": {
-    "express": "~3.4.x"
+    "express": "~3.4.x",
+	"mongoose": "*"
+  },
+  "devDependencies": {
+	"supervisor" : "*"
   },
   "engines": {
     "node": "0.10.x"
