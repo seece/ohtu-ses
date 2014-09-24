@@ -15,7 +15,9 @@ connect();
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.on('disconnected', connect);
-mongoose.connection.on('connected', console.log("Connected to database."));
+mongoose.connection.on('connected', function(){
+    console.log("Connected to database.");
+        });
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
