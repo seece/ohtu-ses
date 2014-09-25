@@ -39,12 +39,12 @@ app.use(express.static(pub));
 
 
 //Jade html template language example stuff...
-app.set('views', __dirname);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(request, response) {
   response.render('index', {}, function(err, html){
-    // ..
+      response.send(html);
   });
 })
 
