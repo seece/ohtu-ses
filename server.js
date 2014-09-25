@@ -33,18 +33,7 @@ mongoose.connection.on('connected', function(){
         });
 
 app.set('port', (process.env.PORT || 5000))
-
-var pub = __dirname + '/public';
-app.use(express.static(pub));
-
-
-//Jade html template language example stuff...
-//Dunno if should be in another file etc?
-app.set('view engine', 'jade');
-
-
-
-
+app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
   response.send('bibtex on paras!')
