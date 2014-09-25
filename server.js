@@ -1,6 +1,19 @@
 var express = require('express')
 var mongoose = require('mongoose')
-var config = require('./config/env/production')
+
+var configPath = './config/env/';
+//get command line argument that specifies whether to run in production/development/.. mode
+if(process.argv.length >= 3)
+{
+    configPath+=process.argv[2];
+}
+else
+{
+    console.log("No configuration type given, using production");
+    configPath+="production";
+}
+
+var config = require(configPath);
 
 var app = express();
 
