@@ -26,12 +26,14 @@ app.use(express.static(pub));
 
 
 //Jade html template language example stuff...
-//Dunno if should be in another file etc?
+app.set('views', __dirname);
 app.set('view engine', 'jade');
 
-
-
-
+app.get('/', function(request, response) {
+  response.render('index', {}, function(err, html){
+    // ..
+  });
+})
 
 app.get('/', function(request, response) {
   response.send('bibtex on paras!')
