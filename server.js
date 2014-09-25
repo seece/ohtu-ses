@@ -39,19 +39,16 @@ app.use(express.static(pub));
 
 
 //Jade html template language example stuff...
-app.set('views', __dirname + 'app/views/');
 app.set('view engine', 'jade');
+app.set('views', (__dirname + '/app/views'));
 
 app.get('/', function(request, response) {
-  response.render('index', {}, function(err, html){
+  response.render('index', function(err, html){
       response.send(html);
+      console.log(html);
+      console.log(err);
   });
 })
-
-app.get('/', function(request, response) {
-  response.send('bibtex on paras!')
-})
-
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
