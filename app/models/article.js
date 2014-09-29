@@ -1,34 +1,31 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-/*
-// TODO load Schema json
-var ArticleSchema = new Schema({});
-
-{
+var ArticleSchema = new Schema({
     author: {
-      type: array,
+      type: Array,
       minItems: 1,
-      items: { type: string },
+      items: { type: String },
       required: true
     },
     title: {
-      type: string,
+      type: String,
       required: true
     },
     year: {
-      type: number,
+      type: Number,
       required: true
     },
     booktitle: {
-      type: string,
+      type: String,
       required: false
     },
     publisher: {
-      type: string,
+      type: String,
       required: false
     }
-}
+});
+
 ArticleSchema.methods = {
 }
 
@@ -36,5 +33,4 @@ ArticleSchema.statics = {
 }
 
 mongoose.model('Article', ArticleSchema);
-*/
 
