@@ -22,6 +22,10 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 If you have `supervisor` installed you can run just `supervisor index.js` to gain automatic reload functionality.
 
+### Tests
+
+Run Mocha tests with `npm test`.
+
 ## Deploying to Heroku
 
 Add Heroku repository.
@@ -34,7 +38,19 @@ $ git push heroku master
 $ heroku open
 ```
 
-This will not work if you don't have access rights to Heroku repository.
+You need access rights to Heroku repository to deploy.
+
+## MongoDB debugging
+
+	$ mongo
+	> use test
+	switched to db test
+	> db
+	test
+	> db.articles.find()
+	{ "title" : "Java-maailman kirot", "year" : 1995, "booktitle" : "TESTIKIRJA", "publisher" : "Arktinen Banaani", "_id" : ObjectId("5429b63f8f3143801f47a76c"), "author" : [ "mluukkai" ], "__v" : 0 }
+	>
+	
 
 ## Documentation
 
