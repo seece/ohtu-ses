@@ -1,16 +1,19 @@
+// This is needed for relative imports to work when including the main module
+// from the test suite.
+process.env.NODE_PATH = '.';
+require('module').Module._initPaths();
+
 var express = require('express')
 var mongoose = require('mongoose')
 
 var configPath = './config/env/';
-//get command line argument that specifies whether to run in production/development/.. mode
-if(process.argv.length >= 3)
-{
-    configPath+=process.argv[2];
-}
-else
-{
-    console.log("No configuration type given, using production");
-    configPath+="production";
+
+if(process.env.MONGOLAB_URI === undefined) {
+    console.log("MONGOLAB_URI not found, using development config.");
+	configPath += "dev";
+} else {
+    console.log("Using production config.");
+    configPath += "production";
 }
 
 var config = require(configPath);
@@ -49,7 +52,10 @@ app.get('/', function(request, response) {
       console.log(err);
   });
 })
+
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
+
+exports.app = app;
 
