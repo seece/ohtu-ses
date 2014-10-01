@@ -33,8 +33,17 @@ ArticleSchema.statics = {
 }
 
 var Article = mongoose.model('Article', ArticleSchema);
-exports = Article;
 
-Article.schema.path('title').validate(function (value) {
-	return value.length > 0 && value.length < 1000;
-}, 'Invalid title.');
+// Validation
+
+var validateStringField = function(value) {
+	return value.length > 0 && value.length < 1000;	
+}
+
+Article.schema.path('title').validate(validateStringField, 'Invalid title');
+Article.schema.path('booktitle').validate(validateStringField, 'Invalid booktitle');
+Article.schema.path('publisher').validate(validateStringField, 'Invalid publisher');
+Article.schema.path('year').validate(function (year) {
+	return year > 0 && year < 3000	
+}, 'Invalid year');
+
