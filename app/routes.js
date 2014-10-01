@@ -1,15 +1,19 @@
-
+var mongoose = require('mongoose'),
+    Article = mongoose.model('Article');
 module.exports = function(app) {
 	app.get('/', function(request, response) {
 	  response.render('index', function(err, html){
 		  response.send(html);
-		  console.log(html);
-		  console.log(err);
+		  //console.log(html);
+		  //console.log(err);
 	  });
 	})
 
 	app.get('/articles', function(req, res){
-		res.send("GET articles");
+        res.render("article", function(err, html){
+            res.send(html);
+        });
+		//res.send("GET articles");
 	});
 
 	app.get('/articles/:id', function(req, res){
@@ -17,7 +21,24 @@ module.exports = function(app) {
 	});
 
 	app.post('/articles', function(req, res){
-		res.send("POST articles");
+
+        var obj = req.body;
+        var authors = req.body.author.split(",");
+        authors.map(Function.prototype.call, String.prototype.trim);
+        obj.author = authors;
+        var article = new Article(obj);
+        article.save(function(err,docs) {
+            if(err !== null)
+            {
+                console.log("failed submit: " + err);
+                res.redirect('/articles');    
+            }
+            else
+            {
+                console.log("succesful submit");
+                res.redirect('/articles');
+            }
+        });
 	})
 
 	app.put('/articles/:id', function(req, res){
