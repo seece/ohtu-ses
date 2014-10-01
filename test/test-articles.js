@@ -1,10 +1,13 @@
 var assert = require('assert')
 	, should = require('should')
     , mongoose = require('mongoose')
+	, request = require('supertest')
+	, app = require('../server.js')
+	, agent = request.agent(app);
 	, article_model = require('../app/models/article')
     , Article = mongoose.model('Article')
 
-var app = require('../server.js')
+var 
 
 var testBookTitle = "TESTIKIRJA";
 
@@ -65,3 +68,9 @@ describe('ArticleDatabase', function() {
 		*/
 	})
 });
+
+/*
+describe('ArticleREST', function() {
+	it('should load a page when requesting to see all ')
+});
+*/
