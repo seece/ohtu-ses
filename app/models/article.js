@@ -36,10 +36,10 @@ mongoose.model('Article', ArticleSchema);
 
 module.exports = {
   create:   createRoute,
-  delete:   function(id, query, cb){},
+  delete:   function(id, query, cb){console.log("jotain delete");},
   read:     readRoute,
-  readById: function(id, query, cb){},
-  update:   function(id, query, model, cb){}
+  readById: function(id, query, cb){console.log("jotain read by id");},
+  update:   function(id, query, model, cb){console.log("jotain update");}
 };
 
 
@@ -49,9 +49,10 @@ var createRoute = function(query, model, cb){
     console.log(query);
     console.log(model);
     console.log(cb);
+    cb();
 };
 
 var readRoute = function(query, cb){
     console.log("GET'd /article");
-    //cb();
+    cb();
 };

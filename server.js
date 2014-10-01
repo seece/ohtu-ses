@@ -3,8 +3,12 @@
 process.env.NODE_PATH = '.';
 require('module').Module._initPaths();
 
-var express = require('express');
-var mongoose = require('mongoose');
+var express = require('express')
+require('express-crud');
+var app = express();
+var Article = require("./app/models/article");
+
+var mongoose = require('mongoose')
 
 var configPath = './config/env/';
 
@@ -18,11 +22,6 @@ if(process.env.MONGOLAB_URI === undefined) {
 
 var config = require(configPath);
 
-var app = express();
-require('express-crud');
-
-var Article = require("./app/models/article.js");
-app.crud('article', Article);
 
 
 // Connect to mongodb
@@ -61,6 +60,8 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
+
+app.crud('article', Article);
 
 exports.app = app;
 
