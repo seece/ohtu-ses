@@ -1,4 +1,35 @@
 extends layout
 
 block content
-    p hello world
+    //Form validation
+    script.
+        function validateInput() {
+            var elements = ["author", "title", "year", "booktitle", "publisher"];
+            for(var elem in elements){
+                var value = document.getElementsByName(elements[elem])[0].value.trim();
+                if(value.length < 1)
+                {
+                    document.getElementById("submitText").innerHTML= "Oops. Forgot to put something in every field";
+                    return false;
+                }
+            }
+        }
+
+
+    h1 hello world
+    form(name="article", action="/article", method="post", onsubmit="return validateInput()")
+        p Author
+        input(type="text", name="author")
+        p Title 
+        input(type="text", name="title")
+        p Year
+        input(type="text", name="year")
+        p Book title
+        input(type="text", name="booktitle")
+        p Publisher 
+        input(type="text", name="publisher")
+        p
+        p#submitText Finished?
+        input(type="submit", value="Create")
+
+    
