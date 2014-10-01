@@ -137,6 +137,15 @@ describe('ArticleDatabase', function() {
 		});
 	})
 
+	it("shouldn't save an Article object without any authors", function(done) {
+		var article = getTestArticle();
+		article.author = [];
+		article.save(function (err, docs) {
+		(err !== null).should.be.true;
+		done();
+		});
+	})
+
 });
 
 describe('ArticleHTTP', function() {
