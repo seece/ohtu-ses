@@ -32,5 +32,11 @@ ArticleSchema.methods = {
 ArticleSchema.statics = {
 }
 
-mongoose.model('Article', ArticleSchema);
+var Article = mongoose.model('Article', ArticleSchema);
+Article.schema.path('title').validate(function (title) {
+	return title.length > 0 && title.length < 1000;	
+}, 'Invalid title');
+
+
+
 

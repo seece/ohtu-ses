@@ -48,7 +48,6 @@ describe('ArticleDatabase', function() {
 		article.should.have.property('year', 1995);
 		article.should.have.property('booktitle', testBookTitle);
 		article.should.have.property('publisher', "Arktinen Banaani");
-
     })
 
 	it('should save an Article object', function(done) {
@@ -65,6 +64,24 @@ describe('ArticleDatabase', function() {
 		});
 		*/
 	})
+
+	it("shouldn't save an Article object with empty title", function(done) {
+		var article = getTestArticle();
+		article.title = "";
+		article.save(function (err, docs) {
+			(err !== null).should.be.true;
+			done();
+			});
+	})
+
+	it("shouldn't save an Article object with 5000 char title", function(done) {
+	article.title = Array(5000).join("x");
+	article.save(function (err, docs) {
+		(err !== null).should.be.true;
+		done();
+		});
+	})
+
 });
 
 describe('ArticleHTTP', function() {
