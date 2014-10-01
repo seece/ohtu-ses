@@ -37,7 +37,7 @@ mongoose.model('Article', ArticleSchema);
 module.exports = {
   create:   createRoute,
   delete:   function(id, query, cb){},
-  read:     function(query, cb){},
+  read:     readRoute,
   readById: function(id, query, cb){},
   update:   function(id, query, model, cb){}
 };
@@ -45,8 +45,13 @@ module.exports = {
 
 //Dunno if these should be here?
 var createRoute = function(query, model, cb){
-    console.log("Got data POSTed to /articles");
+    console.log("Got data POSTed to /article");
     console.log(query);
     console.log(model);
     console.log(cb);
+};
+
+var readRoute = function(query, cb){
+    console.log("GET'd /article");
+    //cb();
 };

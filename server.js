@@ -2,10 +2,9 @@
 // from the test suite.
 process.env.NODE_PATH = '.';
 require('module').Module._initPaths();
-require('express-crud');
 
-var express = require('express')
-var mongoose = require('mongoose')
+var express = require('express');
+var mongoose = require('mongoose');
 
 var configPath = './config/env/';
 
@@ -20,6 +19,7 @@ if(process.env.MONGOLAB_URI === undefined) {
 var config = require(configPath);
 
 var app = express();
+require('express-crud');
 
 var Article = require("./app/models/article.js");
 app.crud('article', Article);
