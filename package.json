@@ -10,6 +10,7 @@
   "dependencies": {
     "express": "~3.4.x",
     "jade": "*",
+    "express-crud": "*",
     "mongoose": "*",
     "supertest": "^0.13.0"
   },

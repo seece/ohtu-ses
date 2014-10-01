@@ -34,3 +34,19 @@ ArticleSchema.statics = {
 
 mongoose.model('Article', ArticleSchema);
 
+module.exports = {
+  create:   createRoute,
+  delete:   function(id, query, cb){},
+  read:     function(query, cb){},
+  readById: function(id, query, cb){},
+  update:   function(id, query, model, cb){}
+};
+
+
+//Dunno if these should be here?
+var createRoute = function(query, model, cb){
+    console.log("Got data POSTed to /articles
+    console.log(query);
+    console.log(model);
+    console.log(cb);
+};
