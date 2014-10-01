@@ -34,15 +34,10 @@ ArticleSchema.statics = {
 
 mongoose.model('Article', ArticleSchema);
 
-module.exports = {
-  create:   createRoute,
-  delete:   function(id, query, cb){console.log("jotain delete");},
-  read:     readRoute,
-  readById: function(id, query, cb){console.log("jotain read by id");},
-  update:   function(id, query, model, cb){console.log("jotain update");}
-};
-
-
+var readByIdRoute = function(id, query, cb)
+{
+    console.log("jotain read bai id");
+}
 //Dunno if these should be here?
 var createRoute = function(query, model, cb){
     console.log("Got data POSTed to /article");
@@ -56,3 +51,13 @@ var readRoute = function(query, cb){
     console.log("GET'd /article");
     cb();
 };
+
+module.exports = {
+  create:   createRoute,
+  delete:   function(id, query, cb){console.log("jotain delete");},
+  read:     readRoute,
+  readById: readByIdRoute,
+  update:   function(id, query, model, cb){console.log("jotain update");}
+};
+
+
