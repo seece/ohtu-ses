@@ -45,7 +45,7 @@ module.exports = {
 
 //Dunno if these should be here?
 var createRoute = function(query, model, cb){
-    console.log("Got data POSTed to /articles
+    console.log("Got data POSTed to /articles");
     console.log(query);
     console.log(model);
     console.log(cb);
