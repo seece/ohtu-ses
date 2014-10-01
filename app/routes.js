@@ -1,3 +1,5 @@
+var mongoose = require('mongoose')
+    , Article = mongoose.model('Article');
 
 module.exports = function(app) {
 	app.get('/', function(request, response) {
@@ -7,6 +9,20 @@ module.exports = function(app) {
 		  console.log(err);
 	  });
 	})
+
+	app.get('/search', function(req, res){
+		Article.find({}, function (err, docs) {
+			if (err) { 
+				// TODO send flash message
+				res.send(err);
+				return;
+			}
+
+			console.log("find ", err, docs);
+			//res.send(docs);
+			res.render('search', {articles : docs});
+		});
+	});
 
 	app.get('/articles', function(req, res){
 		res.send("GET articles");
@@ -27,6 +43,4 @@ module.exports = function(app) {
 	app.delete('/articles/:id', function(req, res){
 		res.send("DELETE articles/" + req.params.id);
 	})
-
-
 }
