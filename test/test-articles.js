@@ -150,10 +150,28 @@ describe('ArticleDatabase', function() {
 
 describe('ArticleHTTP', function() {
 	it('should load a page when requesting to see all articles', function(done) {
-		request(app)
+		agent
 		.get('/search/')
 		.expect('Content-Type', /html/)
 		.expect(/search/)
+		.expect(200)
+		.end(done)
+	});
+
+	it('should have a link to reference listing on index page', function(done) {
+		agent
+		.get('/')
+		.expect('Content-Type', /html/)
+		.expect(/all references/)
+		.expect(200)
+		.end(done)
+	});
+
+	it("should have a link to 'add new article form'", function(done) {
+		agent
+		.get('/')
+		.expect('Content-Type', /html/)
+		.expect(/new article reference/)
 		.expect(200)
 		.end(done)
 	});
