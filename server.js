@@ -39,6 +39,7 @@ app.set('port', (process.env.PORT || 5000))
 
 var pub = __dirname + '/public';
 app.use(express.static(pub));
+app.use(express.bodyParser());
 
 //Jade html template language example stuff...
 app.set('view engine', 'jade');
