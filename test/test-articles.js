@@ -119,6 +119,24 @@ describe('ArticleDatabase', function() {
 		});
 	})
 
+	it("shouldn't save an Article object negative year", function(done) {
+		var article = getTestArticle();
+		article.year = -1;
+		article.save(function (err, docs) {
+		(err !== null).should.be.true;
+		done();
+		});
+	})
+	
+	it("shouldn't save an Article object with year 4001", function(done) {
+		var article = getTestArticle();
+		article.year = 4001;
+		article.save(function (err, docs) {
+		(err !== null).should.be.true;
+		done();
+		});
+	})
+
 });
 
 describe('ArticleHTTP', function() {
