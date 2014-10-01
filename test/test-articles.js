@@ -3,11 +3,9 @@ var assert = require('assert')
     , mongoose = require('mongoose')
 	, request = require('supertest')
 	, app = require('../server.js')
-	, agent = request.agent(app);
+	, agent = request.agent(app)
 	, article_model = require('../app/models/article')
     , Article = mongoose.model('Article')
-
-var 
 
 var testBookTitle = "TESTIKIRJA";
 
@@ -69,8 +67,12 @@ describe('ArticleDatabase', function() {
 	})
 });
 
-/*
-describe('ArticleREST', function() {
-	it('should load a page when requesting to see all ')
+describe('ArticleHTTP', function() {
+	it('should load a page when requesting to see all articles', function(done) {
+		request(app)
+		.get('/articles/')
+		.expect('Content-Type', /html/)
+		.expect(200)
+		.end(done)
+	});
 });
-*/
