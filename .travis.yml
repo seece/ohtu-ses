@@ -1,6 +1,11 @@
 language: node_js
 node_js:
-   - "0.10"
+- '0.10'
 services: mongodb
 before_script:
-  - sleep 5
+- sleep 5
+deploy:
+  provider: heroku
+  app: ses-bibtex
+  api_key:
+    secure: JLq1EjteYfA3+QAKrh3p0wvL81nj02+FdKi/BzKC1KiKNMwyhx/cwwp1t8E1ljlkDsz82xQtK7yAgbvfm4hh9LuinBBcF5uvu6zcYzgg44p8e2aB3cIwDTJosiBK1AAqXySGCnrOtqj193JgYP7M9TxO7RyRXjf5RCc0mF9BlH4=

@@ -151,8 +151,9 @@ describe('ArticleDatabase', function() {
 describe('ArticleHTTP', function() {
 	it('should load a page when requesting to see all articles', function(done) {
 		request(app)
-		.get('/articles/')
+		.get('/search/')
 		.expect('Content-Type', /html/)
+		.expect(/search/)
 		.expect(200)
 		.end(done)
 	});
