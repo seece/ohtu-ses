@@ -38,6 +38,11 @@ module.exports = function(app) {
 	app.post('/articles', function(req, res){
 
         var obj = req.body;
+        if(typeof req.body.author !== 'string'){
+            console.log("tried to use something else than string as author");
+            res.redirect('/articles');
+            return;
+        }
         var authors = req.body.author.split(",");
         authors.map(Function.prototype.call, String.prototype.trim);
         obj.author = authors;

@@ -18,6 +18,24 @@ var getTestArticle = function() {
 		publisher : "Arktinen Banaani"
 	});
 }
+var getTestObject = function() {
+    var obj = {
+		author : "mluukkai, avihavai", //Note this is not an object yet, a string that will be split in /articles route
+		title : "Java-maailman kirot",
+		year : 1995,
+		booktitle : testBookTitle,
+		publisher : "Arktinen Banaani"
+    };
+
+    return obj;
+}
+
+var logErr = function(error, response, body){
+    if(err)
+    {
+        console.log("error: " + err);
+    }
+}
 
 describe('ArticleDatabase', function() {
 	before(function (done) {
@@ -30,7 +48,7 @@ describe('ArticleDatabase', function() {
 			// remove test entries
 			Article.find({booktitle : testBookTitle}).remove().exec();
 			done();
-		});
+	});
 
 	it('should have working database connection', function() {
 		// 1 : connected, 2 : connecting
@@ -146,6 +164,7 @@ describe('ArticleDatabase', function() {
 		});
 	})
 
+
 });
 
 describe('ArticleHTTP', function() {
@@ -158,3 +177,56 @@ describe('ArticleHTTP', function() {
 		.end(done)
 	});
 });
+
+describe('PostNewArticle', function() {
+
+	before(function (done) {
+			// hacky busy loop to wait for db connection
+			console.log("Waiting for db connection.");
+			do {
+				//console.log(mongoose.connection.readyState);
+			} while (mongoose.connection.readyState < 1);
+
+			// remove test entries
+            Article.find({booktitle : testBookTitle}).remove().exec();
+			done();
+	});
+
+    it("shouldn't save a new article with erroneous post data", function(done) {
+
+        var obj = {};
+        obj.year = 4001; 
+
+        
+        request(app).post('/articles/').send(obj).end(function(err, res) {
+
+            var query = Article.find({booktitle : testBookTitle});
+
+            query.exec(function(err,docs) {
+                docs.length.should.be.exactly(0);
+                done();
+            });
+        });
+    });
+
+    it("should save a new article when posting to /articles", function(done) {
+
+        request(app).post('/articles/').send(getTestObject()).end(function(err, res) {
+
+            var query = Article.find({booktitle : testBookTitle});
+
+            query.exec(function(err,docs) {
+                docs.length.should.be.exactly(1);
+                docs[0].booktitle.should.be.exactly(testBookTitle);
+                done();
+            });
+        });
+
+    });
+    //TODO: add tests for checking if trimming spaces from multiple authors works
+    //TODO: add tests for checking if both one author and multiple authors work
+
+});
+
+
+			//Article.find({booktitle : testBookTitle}).remove().exec();
