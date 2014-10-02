@@ -32,7 +32,17 @@ module.exports = function(app) {
 	});
 
 	app.get('/articles/:id', function(req, res){
-		res.send("GET single article" + req.params.id);
+		Article.findById(req.params.id, function (err, doc) {
+			if (err) { 
+				// TODO send flash message
+				res.send(err);
+				return;
+			}
+
+			console.log("find one", err, doc);
+			//res.send(docs);
+			res.render('view', {article : doc});
+		});
 	});
 
 	app.post('/articles', function(req, res){
@@ -47,7 +57,7 @@ module.exports = function(app) {
         authors.map(Function.prototype.call, String.prototype.trim);
         obj.author = authors;
         var article = new Article(obj);
-        article.save(function(err,docs) {
+        article.save(function(err, new_article) {
             if(err !== null)
             {
                 console.log("failed submit: " + err);
@@ -55,7 +65,7 @@ module.exports = function(app) {
             }
             else
             {
-                console.log("succesful submit");
+                console.log("succesful submit with id " + new_article.id);
                 res.redirect('/articles');
             }
         });

@@ -8,6 +8,7 @@
     "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
+    "bibtex-parser-js": "0.0.2",
     "express": "~3.4.x",
     "jade": "*",
     "mongoose": "*"
