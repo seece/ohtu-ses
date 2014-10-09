@@ -1,4 +1,4 @@
-var accepted_formats = ['article']
+﻿var accepted_formats = ['article']
 
 var getArrayKeys = function (dictionary) {
 	var keys = [];
@@ -10,6 +10,17 @@ var getArrayKeys = function (dictionary) {
 	return keys;
 }
 
+var ensureAlphanumerics = function (str) {
+	str = str.toString();
+	str = str.replace('ä', '{a}');
+	str = str.replace('Ä', '{A}');
+	str = str.replace('ö', '{o}');
+	str = str.replace('Ö', '{O}');
+	str = str.replace('å', '{a}');
+	str = str.replace('Å', '{A}');
+	return str;
+}
+
 module.exports = {
 	generate: function (type, id, fields) {
 		if (accepted_formats.indexOf(type) <= -1) {
@@ -17,12 +28,19 @@ module.exports = {
 			return null;
 		}
 
-		var format = "@#TYPE{ #ID,\n#ITEMS }";
+		var format = "@#TYPE{ #ID,\n#ITEMS}";
 		var keys = getArrayKeys(fields);
 		var itemlist = "";
 
 		for (var key in fields) {
-			itemlist += key + " = \"" + fields[key] + "\",\n";
+			var value = fields[key];
+			var text = value;
+
+			if (Array.isArray(value)) {
+				text = value.join();
+			}
+
+			itemlist += key + " = \"" + ensureAlphanumerics(text) + "\",\n";
 		}
 
 		var bibtex = format.replace("#ITEMS", itemlist);
