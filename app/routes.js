@@ -13,6 +13,7 @@ module.exports = function(app) {
 	app.get('/search', function(req, res){
 		Article.find({}, function (err, docs) {
 			if (err) { 
+                console.log("err: " + err);
 				// TODO send flash message
 				res.send(err);
 				return;
@@ -44,6 +45,30 @@ module.exports = function(app) {
 			res.render('view', {article : doc});
 		});
 	});
+
+    app.get('/find', function(req,res) {
+       res.render("find", function (err, html) {
+            res.send(html);
+       });
+    });
+
+    app.post('/find', function(req,res) {
+        var obj = req.body;
+        console.log(obj);
+
+        var findObj = {};
+        findObj[obj.filter] = obj.value;
+        //Article.find({obj.filter: obj.value}, function(err, docs) {
+        Article.find(findObj, function(err, docs) {
+            if(err) {
+                console.log(err);
+                res.redirect('/find');
+            }
+            console.log("rendering: ", docs);
+            res.render('search', {articles : docs});
+        });
+
+    });
 
 	app.post('/articles', function(req, res){
 
