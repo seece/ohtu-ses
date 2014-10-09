@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+    h2 Search/filter articles
+
+
+    form(name="find", action="/find", method="post")
+        p filter:
+        select(name="filter")
+            option(value="author") Author
+            option(value="title") Reference's title 
+            option(value="year") Year
+            option(value="booktitle") Book's title 
+            option(value="publisher") Publisher
+        p value to search for:
+        input(type="text", name="value")
+        br
+        input(type="submit", value="Find!")
+    br
+    br
+    br

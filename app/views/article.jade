@@ -1,23 +1,9 @@
 extends layout
 
 block content
-    //Form validation
-    script.
-        function validateInput() {
-            var elements = ["author", "title", "year", "booktitle", "publisher"];
-            for(var elem in elements){
-                var value = document.getElementsByName(elements[elem])[0].value.trim();
-                if(value.length < 1)
-                {
-                    document.getElementById("submitText").innerHTML= "Oops. Forgot to put something in every field";
-                    return false;
-                }
-            }
-        }
 
-
-    h1 hello world
-    form(name="article", action="/articles", method="post", onsubmit="return validateInput()")
+    h2 Enter a new article reference
+    form(name="article", action="/articles", method="post")
         p Authors separated by comma
         input(type="text", name="author")
         p Title 
