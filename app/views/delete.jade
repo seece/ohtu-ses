@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h2 Are you sure you want to delete '#{article.title}'?
+    p Author&emsp; 
+        b #{article.author}
+    p Title&emsp;
+        b #{article.title}
+    p Year&emsp; 
+        b #{article.year}
+    p Book Title &emsp;
+        b #{article.booktitle}
+    p Publisher &emsp;
+        b #{article.publisher}
+
+    form(name="delete", action="/delete/#{article.id}", method="post")
+        input(type="submit", value="Delete permanently")

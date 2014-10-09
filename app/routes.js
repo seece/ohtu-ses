@@ -53,6 +53,29 @@ module.exports = function(app) {
        */
     });
 
+    app.get('/delete/:id', function(req,res) {
+        Article.findById(req.params.id, function(err, doc) {
+            if(err) {
+                res.send(err);
+                return;
+            }
+
+            res.render("delete", {article : doc});
+        });
+    });
+
+    app.post('/delete/:id', function(req,res) {
+        Article.findById(req.params.id, function(err,doc) {
+            if(err)
+            {
+                console.log(err);
+                return;
+            }
+        }).remove().exec();
+
+        res.redirect("/search");
+    });
+
     app.get('/edit/:id', function(req, res) {
         Article.findById(req.params.id, function(err,doc) {
             if(err) {
