@@ -26,9 +26,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/articles', function(req, res){
-        res.render("article", function(err, html){
-            res.send(html);
-        });
+        res.render("article");
 		//res.send("GET articles");
 	});
 
@@ -47,9 +45,35 @@ module.exports = function(app) {
 	});
 
     app.get('/find', function(req,res) {
+       res.render("find");
+       /*
        res.render("find", function (err, html) {
             res.send(html);
        });
+       */
+    });
+
+    app.get('/edit/:id', function(req, res) {
+        Article.findById(req.params.id, function(err,doc) {
+            if(err) {
+                res.send(err);
+                return;
+            }
+            res.render("edit", {article : doc});
+        });
+    });
+
+    app.post('/edit/:id', function(req, res) {
+        Article.findById(req.params.id, function(err,doc) {
+            if(err) {
+                res.send(err);
+                return;
+            }
+
+
+            //Edit here
+
+        });
     });
 
     app.post('/find', function(req,res) {

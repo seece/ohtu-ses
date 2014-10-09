@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h2 Edit article '#{article.title}'
+    form(name="article", action="/edit/#{article.id}", method="post")
+        p Author
+        input(type="text" name="author" value="#{article.author}")
+
+        p Article's Title 
+        input(type="text" name="title" value="#{article.title}")
+
+        p Year 
+        input(type="text" name="year" value="#{article.year}")
+
+        p Book's Title 
+        input(type="text" name="booktitle" value="#{article.booktitle}")
+
+        p Publisher
+        input(type="text" name="publisher" value="#{article.publisher}")
+
+        input(type="submit", value="Edit")
+    br
+    br
+    br
+
