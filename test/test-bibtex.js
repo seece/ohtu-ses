@@ -10,7 +10,7 @@ describe('BibtexExporter', function() {
 
 	it('should generate empty article listing', function () {
 		var bib = bibtex.generate('article', 'jaja92', {});
-		bib.should.be.exactly("@article{ jaja92,\n }");
+		bib.should.be.exactly("@article{ jaja92,\n}");
 	})
 
 	it('should generate simple article listing', function () {
@@ -20,7 +20,7 @@ describe('BibtexExporter', function() {
 				year : 1995,
 				author : "Suuri Auktoriteetti"
 			});
-		bib.should.be.exactly("@article{ jaja92,\ntitle = \"artikkeli\",\nyear = \"1995\",\nauthor = \"Suuri Auktoriteetti\",\n }");
+		bib.should.be.exactly("@article{ jaja92,\ntitle = \"artikkeli\",\nyear = \"1995\",\nauthor = \"Suuri Auktoriteetti\",\n}");
 	})
 })
 
