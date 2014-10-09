@@ -64,15 +64,24 @@ module.exports = function(app) {
     });
 
     app.post('/edit/:id', function(req, res) {
+        var obj = req.body;
+        console.log(obj);
         Article.findById(req.params.id, function(err,doc) {
             if(err) {
                 res.send(err);
                 return;
             }
 
+            var conditions = {_id: req.params.id},
+                update = {author: obj.author, title: obj.title, year: obj.year, booktitle: obj.booktitle, publisher: obj.publisher},
+                options = { multi: false};
 
-            //Edit here
-
+            var cb = function(err, numAffected) {
+                console.log(err);
+                console.log("affected: " + numAffected);
+                res.redirect('/articles/' + req.params.id);
+            }
+            Article.update(conditions, update, options, cb);
         });
     });
 
@@ -82,7 +91,6 @@ module.exports = function(app) {
 
         var findObj = {};
         findObj[obj.filter] = obj.value;
-        //Article.find({obj.filter: obj.value}, function(err, docs) {
         Article.find(findObj, function(err, docs) {
             if(err) {
                 console.log(err);
