@@ -1,4 +1,4 @@
-[Loppuraportti linkki][Loppuraportti.md "Loppuraportti"]
+[Loppuraportti](Loppuraportti.md)
 
 # ohtu ses BibTeX
 *Based on the Heroku node.js example*
