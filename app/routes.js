@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
-    , Article = mongoose.model('Article');
+    , Article = mongoose.model('Article')
+	, bibtex = require('app/bibtex');
 
 module.exports = function(app) {
 	app.get('/', function(request, response) {
@@ -44,13 +45,35 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post('/bibtex/:id', function(req, res){
+		Article.findById(req.params.id, function (err, doc) {
+			if (err) { 
+				// TODO send flash message
+				res.send(err);
+				return;
+			}
+
+			var obj = req.body;
+
+			console.log("bibtex target", err, doc);
+			//res.send(docs);
+			//res.render('', {article : doc});
+			var fields = {
+				author : doc.author,
+				title : doc.title,
+				year : doc.year,
+				booktitle : doc.booktitle,
+				publisher : doc.publisher
+			};
+
+			res.type('text/plain');
+			res.charset = 'utf-8';
+			res.send(bibtex.generate('article', obj.ref_id, fields))
+		});
+	});
+
     app.get('/find', function(req,res) {
        res.render("find");
-       /*
-       res.render("find", function (err, html) {
-            res.send(html);
-       });
-       */
     });
 
     app.get('/delete/:id', function(req,res) {

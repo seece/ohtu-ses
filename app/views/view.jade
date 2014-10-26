@@ -3,6 +3,13 @@ extends layout
 block content
     h2 View article reference
     h3= article.title
+
+    h4 Authors
+    ul
+        each a in article.author
+            li #{a}   
+
+    h4 Details
     ul
         li year: #{article.year}
         li book title: #{article.booktitle}
@@ -11,6 +18,11 @@ block content
     br
     a(href="/delete/#{article.id}") Delete
     br
+    h4 Export BibTex
+    form(action="/bibtex/#{article.id}", method="post")
+        label(for="POST-ref_id") Reference ID: 
+        input(id="ref_id", type="text", name="ref_id", value=article.author[0].replace(/\W/g, '')+article.year)
+        input(type="submit" value="Export")
     br
     br
     
