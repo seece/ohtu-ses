@@ -1,3 +1,5 @@
+[Loppuraportti linkki][Loppuraportti.md "Loppuraportti"]
+
 # ohtu ses BibTeX
 *Based on the Heroku node.js example*
 
