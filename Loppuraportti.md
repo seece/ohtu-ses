@@ -29,11 +29,14 @@ Demossa ilmeni huojennukseksemme, että muutkaan eivät olleet saaneet aivan kai
 ## Tech stack
 Käytetyiksi teknologioiksi valikoitui ensimmäisen sprintin aikana varsin toimivat työkalut. 
 
-###Jade HTML template enginellä saatiin vähennettyä toisteista HTML:ää huomattavasti ja sivuista dynaamisia. 
+####Jade HTML template enginellä
+saatiin vähennettyä toisteista HTML:ää huomattavasti ja sivuista dynaamisia. 
 
-###BDD ja testaus hoidettiin yhdistämällä kirjastot should, mocha, supertest. Should auttoi tekemään testeistä luettavampia ihmiselle. Mocha hoiti testien ajamisen ja nätin tulostuksen. Supertest oli erityisen kätevä. Sillä saimme testattua mm. sen, että serveri palauttaa oikeasta osoitteesta oikeasisältöistä HTML:ää oikealla statuskoodilla ilman, että näitä tarvitsisi käsin kokeilla. Supertest auttoi myös sen testaamisessa, että HTTP POSTit oikeaan osoitteeseen oikeasti toimivat ja lisäävät tietokantaan dataa.
+####BDD ja testaus
+hoidettiin yhdistämällä kirjastot should, mocha, supertest. Should auttoi tekemään testeistä luettavampia ihmiselle. Mocha hoiti testien ajamisen ja nätin tulostuksen. Supertest oli erityisen kätevä. Sillä saimme testattua mm. sen, että serveri palauttaa oikeasta osoitteesta oikeasisältöistä HTML:ää oikealla statuskoodilla ilman, että näitä tarvitsisi käsin kokeilla. Supertest auttoi myös sen testaamisessa, että HTTP POSTit oikeaan osoitteeseen oikeasti toimivat ja lisäävät tietokantaan dataa.
 
-###Back-end hoitui Node.JS:llä. Hukkasimme aikaa ensimmäisestä sprintistä yrittämällä löytää sille hyviä perus crud-kirjastoja, mutta päädyimmekin kirjoittamaan kaikki routejen sisällöt itse. Express kirjasto helpoitti taakkaa sen verran, että routet pystyttiin luomaan vain kuvailemalla ne tyyliin "polku"->routen-käsittelevä-funktio.
+####Back-end
+hoitui Node.JS:llä. Hukkasimme aikaa ensimmäisestä sprintistä yrittämällä löytää sille hyviä perus crud-kirjastoja, mutta päädyimmekin kirjoittamaan kaikki routejen sisällöt itse. Express kirjasto helpoitti taakkaa sen verran, että routet pystyttiin luomaan vain kuvailemalla ne tyyliin "polku"->routen-käsittelevä-funktio.
 
 ## Lopuksi
 
